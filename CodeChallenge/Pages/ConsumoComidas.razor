@@ -1,0 +1,50 @@
+﻿@page "/consumoComidas"
+@inject CodeChallenge.Data.ZoologicoServicio _zoologicoServicio
+
+<h3>ConsumoComidas</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                <a href="#" class="badge badge-success">Hierbas</a>
+            </th>
+            <th scope="col">
+                <a href="#" class="badge badge-danger">Carnes</a>
+            </th>
+        </tr>
+    </thead>
+
+    
+    
+
+    <tbody>
+        <tr>
+            <th scope="row">
+            @_hierba
+            </th>
+            <th scope="row">
+            @_carne
+            </th>
+            
+        </tr>
+    </tbody>
+
+
+</table>
+
+
+    @code {
+        protected double _carne = 0;
+        protected double _hierba = 0;
+
+
+
+        protected override Task OnInitializedAsync()
+        {
+            var tupla = _zoologicoServicio.ObtenerConsumoComidaMensual();
+            _carne = tupla.carne;
+            _hierba = tupla.hierba;
+            return base.OnInitializedAsync();
+        }
+    }

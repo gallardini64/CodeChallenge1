@@ -1,0 +1,75 @@
+﻿@page "/listaAnimales"
+@inject CodeChallenge.Data.ZoologicoServicio _zoologicoServicio
+
+<h3>Lista Animales</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Especie</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Lugar de Origen</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Comida</th>
+            <th scope="col">Consumo Mensual</th>
+            <th scope="col">Kilos</th>
+            <th scope="col">Periodo</th>
+            <th scope="col">Porcentaje</th>
+        </tr>
+    </thead>
+
+    @foreach (var animal in _animales)
+    {
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>@animal.Especie</td>
+                <td>@animal.Edad</td>
+                <td>@animal.LugarOrigen</td>
+                <td>@animal.Tipo</td>
+                <td>@animal.CalcularConsumoMensual().comida</td>
+                <td>@animal.CalcularConsumoMensual().total</td>
+                @if (animal.Tipo == "Herbívoro")
+                {
+                    <td>@animal.Kilos</td>
+                }
+                else
+                {
+                    <td>-</td>
+                }
+                @if (animal.Tipo == "Reptil")
+                {
+                    <td>@animal.Periodo</td>
+                }
+                else
+                {
+                    <td>-</td>
+                }
+                @if (animal.Tipo != "Herbívoro")
+                {
+                    <td>@animal.Porcentaje</td>
+                }
+                else
+                {
+                    <td>-</td>
+                }
+            </tr>
+        </tbody>
+    }
+
+
+</table>
+
+
+
+@code {
+    private List<CodeChallenge.Data.Model.Animal> _animales;
+
+
+    protected override Task OnInitializedAsync()
+    {
+        _animales = _zoologicoServicio.ObtenerAnimales();
+        return base.OnInitializedAsync();
+    }
+}

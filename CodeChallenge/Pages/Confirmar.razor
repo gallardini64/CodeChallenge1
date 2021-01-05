@@ -1,0 +1,32 @@
+﻿@page "/confirmar"
+@inject CodeChallenge.Data.ZoologicoServicio _zoologicoServicio
+@inject NavigationManager NavigationManager
+<h3>El animal Ingresado Supera Los 1500 kilos de consumo de alimento mensual</h3>
+<h3>¿Desea Agregarlo?</h3>
+
+
+<button type="button" class="btn btn-success" @onclick="AgregarAnimal">Agregar</button>
+<button type="button" class="btn btn-success" @onclick="Cancelar">Cancelar</button>
+
+
+@code {
+    public void AgregarAnimal()
+    {
+        bool condicion = true;
+        _zoologicoServicio.Confirmar(condicion);
+        NavigationManager.NavigateTo("listaAnimales");
+    }
+
+    public void Cancelar()
+    {
+        bool condicion = false;
+        _zoologicoServicio.Confirmar(condicion);
+        NavigationManager.NavigateTo("listaAnimales");
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+}

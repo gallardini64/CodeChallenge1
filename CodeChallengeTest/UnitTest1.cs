@@ -100,17 +100,17 @@ namespace CodeChallengeTest
         private List<Animal> MockFactoryCarnivoros()
         {
             return new List<Animal>() {
-                new Animal{
+                new Carnívoro{
                     Tipo = "Carnívoro",
                     Peso = 100,
                     Porcentaje = 0.05
                 },
-                new Animal{
+                new Carnívoro{
                     Tipo = "Carnívoro",
                     Peso = 80,
                     Porcentaje = 0.1
                 },
-                new Animal{
+                new Carnívoro{
                     Tipo = "Carnívoro",
                     Peso = 95,
                     Porcentaje = 0.1
@@ -121,7 +121,7 @@ namespace CodeChallengeTest
         private List<Animal> MockFactoryReptiles()
         {
             return new List<Animal>() {
-                new Animal{
+                new Reptil{
                     Tipo = "Reptil",
                     Peso = 700,
                     Porcentaje = 0.1,
@@ -133,12 +133,12 @@ namespace CodeChallengeTest
         private List<Animal> MockFactoryHerivboros()
         {
             return new List<Animal>() {
-                new Animal{
+                new Herbívoro{
                     Tipo = "Herbívoro",
                     Peso = 30,
                     Kilos = 10
                 },
-                new Animal{
+                new Herbívoro{
                     Tipo = "Herbívoro",
                     Peso = 50,
                     Kilos = 15
@@ -149,32 +149,32 @@ namespace CodeChallengeTest
         private List<Animal> MockFactoryTodos()
         {
             return new List<Animal>() {
-                new Animal{
+                new Carnívoro{
                     Tipo = "Carnívoro",
                     Peso = 100,
                     Porcentaje = 0.05
                 },
-                new Animal{
+                new Carnívoro{
                     Tipo = "Carnívoro",
                     Peso = 80,
                     Porcentaje = 0.1
                 },
-                new Animal{
+                new Carnívoro{
                     Tipo = "Carnívoro",
                     Peso = 95,
                     Porcentaje = 0.1
                 },
-                new Animal{
+                new Herbívoro{
                     Tipo = "Herbívoro",
                     Peso = 30,
                     Kilos = 10
                 },
-                new Animal{
+                new Herbívoro{
                     Tipo = "Herbívoro",
                     Peso = 50,
                     Kilos = 15
                 },
-                new Animal{
+                new Reptil{
                     Tipo = "Reptil",
                     Peso = 700,
                     Porcentaje = 0.1,

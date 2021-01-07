@@ -12,20 +12,40 @@ namespace CodeChallenge.Data
         {
             _animales = new List<Animal>();
         }
-        public List<string> TiposAnimales => new List<string>() {"Carnívoro", "Herbívoro", "Reptil"};
+        public List<string> TiposAnimales => new List<string>() { "Carnívoro", "Herbívoro", "Reptil" };
 
         public bool AgregarAnimal(Animal animal)
         {
-            _Animal = animal;
+            DefinirTipo(animal);
             _animales.Add(_Animal);
             return true;
+        }
+
+        private void DefinirTipo(Animal animal)
+        {
+            if (animal.Tipo == "Carnívoro")
+            {
+                Carnívoro car = (Carnívoro)animal;
+                _Animal = car;
+            }
+            else if (animal.Tipo == "Herbívoro")
+            {
+                Herbívoro her = (Herbívoro)animal;
+                _Animal = her;
+            }
+            else if (animal.Tipo == "Reptil")
+            {
+                Reptil rep = (Reptil)animal;
+                _Animal = rep;
+            }
         }
 
         public void Confirmar(bool condicion)
         {
             if (condicion)
             {
-                    _animales.Add(_Animal);
+                DefinirTipo(_Animal);
+                _animales.Add(_Animal);
             }
             else
             {
@@ -73,19 +93,22 @@ namespace CodeChallenge.Data
             {
                 return false;
             }
-            if (animal.Tipo != null)
+            if (animal.Tipo == "Herbívoro"
+                && animal.Kilos <= 0)
             {
-                if (animal.Tipo == "Herbívoro"
-                    && animal.Kilos <= 0)
-                {
-                    return false;
-                }
-                if (animal.Tipo == "Carnívoro"
-                    && animal.Porcentaje <= 0)
-                {
-                    return false;
-                }
+                return false;
             }
+            if (animal.Tipo == "Carnívoro"
+                && (animal.Porcentaje <= 0 || animal.Porcentaje > 1))
+            {
+                return false;
+            }
+            if (animal.Tipo == "Reptil"
+                && (animal.Porcentaje <= 0 || animal.Porcentaje > 1 || animal.Periodo <= 0))
+            {
+                return false;
+            }
+
 
             return true;
         }

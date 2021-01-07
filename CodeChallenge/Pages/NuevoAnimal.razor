@@ -106,16 +106,24 @@
 
     private void AgregarAnimal()
     {
-        if (animal.CalcularConsumoMensual().total > 1500)
+        if (_zoologicoServicio.ValidarAnimal(animal))
         {
-            _zoologicoServicio._Animal = animal;
-            NavigationManager.NavigateTo("confirmar");
+            if (animal.CalcularConsumoMensual().total > 1500)
+            {
+                _zoologicoServicio._Animal = animal;
+                NavigationManager.NavigateTo("confirmar");
+            }
+            else
+            {
+                _zoologicoServicio.AgregarAnimal(animal);
+                NavigationManager.NavigateTo("listaAnimales");
+            }
         }
         else
         {
-            _zoologicoServicio.AgregarAnimal(animal);
-            NavigationManager.NavigateTo("listaAnimales");
+            NavigationManager.NavigateTo("error");
         }
+
 
     }
 

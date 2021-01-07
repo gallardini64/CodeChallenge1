@@ -62,5 +62,32 @@ namespace CodeChallenge.Data
 
             return (carnes, hierbas);
         }
+
+        public bool ValidarAnimal(Animal animal)
+        {
+            if (animal.Especie == null
+                || animal.Tipo == null
+                || animal.Edad <= 0
+                || animal.LugarOrigen == null
+                || animal.Peso <= 0)
+            {
+                return false;
+            }
+            if (animal.Tipo != null)
+            {
+                if (animal.Tipo == "Herbívoro"
+                    && animal.Kilos <= 0)
+                {
+                    return false;
+                }
+                if (animal.Tipo == "Carnívoro"
+                    && animal.Porcentaje <= 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

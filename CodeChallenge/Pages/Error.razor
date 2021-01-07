@@ -1,1 +1,20 @@
-﻿@page "/error"
+﻿@inject NavigationManager NavigationManager
+@page "/error"
+
+<div class="alert alert-danger" role="alert">
+    Ningun campo fundamental en el agregado del animal puede quedar vacio 
+</div>
+
+<button type="button" class="btn btn-success" @onclick="Volver">Ok</button>
+
+@code{
+    private void Volver()
+    {
+        NavigationManager.NavigateTo("nuevoAnimal");
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+}
